@@ -1,6 +1,6 @@
 //Return the number of steps required to reach from point A to B in a Maze 
 
-public class Maze {
+public class MazeStepsCount {
     public static void main(String[] args) {
         System.out.println(count(3, 3));
     }
@@ -14,4 +14,6 @@ public class Maze {
         int right = count(r, c - 1);
         return left + right;
     }
+
+   
 }
