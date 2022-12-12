@@ -1,3 +1,5 @@
+// Solution to problem number 70 of Leetcode
+
 class Solution {
     public int climbStairs(int n) {
         if (n <= 2) {
