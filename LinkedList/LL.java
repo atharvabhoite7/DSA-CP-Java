@@ -101,7 +101,7 @@ public class LL {
     }
 
     public void reverseIterate() {
-        if(head == null || head.next== null){
+        if (head == null || head.next == null) {
             return;
         }
 
@@ -118,6 +118,18 @@ public class LL {
         }
         head.next = null;
         head = prevNode;
+    }
+
+    public Node reverseRecursive(Node head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        Node newHead = reverseRecursive(head.next);
+        head.next.next = head;
+        head.next = null;
+
+        return newHead;
     }
 
     public static void main(String[] args) {
@@ -152,5 +164,7 @@ public class LL {
         list.reverseIterate();
         list.printList();
 
+        list.head = list.reverseRecursive(list.head);
+        list.printList();
     }
 }
