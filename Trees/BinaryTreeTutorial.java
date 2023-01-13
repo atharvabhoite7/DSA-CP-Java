@@ -86,6 +86,41 @@ public class BinaryTreeTutorial {
         }
     }
 
+    public static int countOfNodes(Node root) {
+        if (root == null) {
+            return 0;
+        }
+
+        int leftCount = countOfNodes(root.left);
+        int rightCount = countOfNodes(root.right);
+
+        return leftCount + rightCount + 1;
+    }
+
+    public static int sumOfNodes(Node root){
+        if(root == null){
+            return 0;
+        }
+
+        int leftSum = sumOfNodes(root.left);
+        int rightSum = sumOfNodes(root.right);
+
+        return leftSum + rightSum + root.data;
+    }
+
+    public static int heightOfTree(Node root){
+        if(root == null){
+            return 0;
+        }
+
+        int leftHeight = heightOfTree(root.left);
+        int rightHeight = heightOfTree(root.right);
+
+        int myHeight = Math.max(leftHeight, rightHeight) + 1;
+
+        return myHeight;
+    }
+
     public static void main(String[] args) {
         int nodes[] = { 1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1 };
         BinaryTree tree = new BinaryTree();
@@ -95,6 +130,9 @@ public class BinaryTreeTutorial {
         inorder(root);
         postorder(root);
         levelOrder(root);
+        System.out.println(countOfNodes(root));
+        System.out.println(sumOfNodes(root));
+        System.out.println(heightOfTree(root));
 
     }
 }
