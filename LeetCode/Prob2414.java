@@ -1,3 +1,4 @@
+
 // Solution to problem number 2414 of Leetcode
 
 class Solution {
