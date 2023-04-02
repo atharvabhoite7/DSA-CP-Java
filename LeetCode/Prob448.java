@@ -1,18 +1,17 @@
 class Solution {
     public List<Integer> findDisappearedNumbers(int[] nums) {
-
-        HashMap<Integer, Integer> map = new HashMap<>();
-        for (int i = 1; i <= nums.length; i++) {
-            map.put(i, 0);
+        List<Integer> list = new ArrayList<>();
+        int[] count = new int[nums.length + 1];
+        for (int i = 0; i < nums.length; i++) {
+            count[nums[i]]++;
         }
 
-        for (int i = 0; i < nums.length; i++) {
-            if (map.containsKey(nums[i])) {
-                map.remove(nums[i]);
+        for (int i = 1; i < count.length; i++) {
+            if (count[i] == 0) {
+                list.add(i);
             }
         }
-        List<Integer> list = new ArrayList<>(map.keySet());
-
+        
         return list;
     }
 }
