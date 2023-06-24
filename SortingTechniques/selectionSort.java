@@ -1,37 +1,30 @@
 public class selectionSort {
     public static void main(String args[])
     {
-        int [] intArray = {20, 35, -15, 0 ,48, 3, 58, 7};
-
-        for (int lastUnsortedIndex = intArray.length - 1; lastUnsortedIndex > 0; lastUnsortedIndex-- )
-        {
-            int largest = 0;
-
-            for (int i = 1; i <= lastUnsortedIndex; i++)
-            {
-                if (intArray[i] > intArray[largest])
-                {
-                    largest = i;
+        int [] arr = {20, 35, -125, 0 ,48, 3, 58, 7};
+        
+        for(int i=0; i<arr.length-1; i++){
+            int min = i;
+            for(int j=i+1; j<arr.length; j++){
+                if(arr[j] < arr[min]){
+                    min = j;
                 }
             }
-
-            swap(intArray, largest, lastUnsortedIndex);
-        }
+            swap(arr, i, min);
+        }       
         
-        for (int i =0; i < intArray.length - 1; i++)
-        System.out.println(intArray[i]);
+        for (int i =0; i < arr.length ; i++)
+        System.out.println(arr[i]);
     }
 
-    public static void swap(int [] array, int i, int j)
+    public static void swap(int [] arr, int i, int j)
     {
-        if (i == j)
-        {
-            return;
-        }
+        if(i == j) return ;
+
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
         
-            int temp = array [i];
-            array [i] = array [j];
-            array [j] = temp;
         
     }
 }
