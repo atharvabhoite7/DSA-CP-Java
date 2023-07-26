@@ -1,56 +1,47 @@
-// Solution to problem number 234 of Leetcode
-
 /**
  * Definition for singly-linked list.
  * public class ListNode {
- * int val;
- * ListNode next;
- * ListNode() {}
- * ListNode(int val) { this.val = val; }
- * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
 class Solution {
-    public ListNode reverse(ListNode head) {
-        ListNode prev = null;
-        ListNode curr = head;
+    public boolean isPalindrome(ListNode head) {
+        ListNode hare, turtle, temp;
+        hare = turtle = temp = head;
 
-        while (curr != null) {
-            ListNode next = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = next;
-        }
-        return prev;
-    }
-
-    public ListNode findMiddle(ListNode head) {
-        ListNode hare = head;
-        ListNode turtle = head;
-
-        while (hare.next != null && hare.next.next != null) {
+        while(hare.next!=null && hare.next.next!=null){
             hare = hare.next.next;
             turtle = turtle.next;
         }
-        return turtle;
-    }
 
-    public boolean isPalindrome(ListNode head) {
-        if (head == null || head.next == null) {
-            return true;
-        }
+        turtle.next = reverse(turtle.next);
 
-        ListNode middle = findMiddle(head);
-        ListNode secondHalfStart = reverse(middle.next);
+        turtle = turtle.next;
 
-        ListNode firstHalfStart = head;
-        while (secondHalfStart != null) {
-            if (firstHalfStart.val != secondHalfStart.val) {
+        while(turtle != null){
+            if(turtle.val != temp.val){
                 return false;
             }
-            firstHalfStart = firstHalfStart.next;
-            secondHalfStart = secondHalfStart.next;
+            turtle = turtle.next;
+            temp = temp.next;
         }
         return true;
+
+
+    }
+
+    public ListNode reverse(ListNode head){
+        ListNode newHead = null;
+        while(head!=null){
+            ListNode next = head.next;
+            head.next = newHead;
+            newHead = head;
+            head = next; 
+        }
+        return newHead;
     }
 }
